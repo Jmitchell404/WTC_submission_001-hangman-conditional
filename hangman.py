@@ -1,10 +1,8 @@
 import random
 
-
 def read_file(file_name):
     file = open(file_name,'r')
     return file.readlines()
-
 
 def select_random_word(words):
     random_index = random.randint(0, len(words)-1)
@@ -23,20 +21,28 @@ def get_user_input():
     return input('Guess the missing letter: ')
 
 
-def show_answer(answer, selected_word, missing_letter_index):
+def show_answer(answer, selected_word, missing_letter_index):  
     """
     TODO Step 1 - Show better results messages
     """
+    
+    print("The word was: " + selected_word)
+    if answer == selected_word[missing_letter_index]: #if users input is the missing letter that is taken from the selected word.
+       print("Well done! You are awesome!") #it will print Well done! You are awesome!
+    else: #if the users input is not the missing letter
+       print("Wrong! Do better next time.") #it will print out Wrong1 Do better next time.
     pass
 
 
-# TODO: Step 2
 def ask_file_name():
     """
     TODO Step 2 - Update to prompt user for filename to use for words
     """
-    return 'TODO.txt'
-
+    file_name = input ("Words file? [leave empty to use short_words.txt] : ") #it will ask the user which words file you would like to select
+    if file_name == "": #this is a if statememt for when the users input = empty
+        file_name = "short_words.txt"
+    
+    return file_name
 
 def run_game(file_name):
     """
